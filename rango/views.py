@@ -8,4 +8,5 @@ def index(request):
     #this is why the location of the template folder is important.
     return render(request, 'rango/index.html', context_dict)
 def about(request):
-    return HttpResponse("Rango says here is the about page. <br/><a href = /rango>Index</a>")
+    context_dict = {'message': "This is rango's cousin. can't you see the resemblance ?"}
+    return render(request, 'rango/about.html', context_dict)
