@@ -10,12 +10,12 @@ def add_page (cat,title,url, views = 0):
     Page.objects.get_or_create(category=cat, title = title, url= url, views = views)
 
 
-def add_cat(name):
-    c = Category.objects.get_or_create(name = name)[0]
+def add_cat(name, noViews, noLikes):
+    c = Category.objects.get_or_create(name = name, views = noViews, likes = noLikes)[0]
     return c
 
 def populate():
-    python_cat = add_cat('Python')
+    python_cat = add_cat('Python', noViews = 128, noLikes = 64 )
 
     add_page(cat = python_cat,
              title = "Official Python Tutorial",
@@ -29,7 +29,7 @@ def populate():
              title = "How to Think like a Computer Scientist",
              url = "http://www.korokithakis.net/tutorials/python")
 
-    django_cat = add_cat(name = "Django")
+    django_cat = add_cat(name = "Django", noViews = 64, noLikes = 32)
 
     add_page(cat = django_cat,
              title = "Official Django Tutorial",
@@ -43,7 +43,7 @@ def populate():
              title = "How to Tango with Django",
              url = "http://www.tangowithdjango.com/")
 
-    frame_cat = add_cat("Other Frameworks")
+    frame_cat = add_cat("Other Frameworks", noViews = 32, noLikes = 16)
 
     add_page(frame_cat,
              "Bottle",
